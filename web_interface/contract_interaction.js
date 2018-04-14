@@ -19,5 +19,7 @@ $(document).ready(function() {
         var CoursetroContract = web3.eth.contract(abi);
         console.log(coursetro);
         var coursetro = CoursetroContract.at("0x468aba744e052f3a95262ae7cd3b05290a69edf2");
+        coursetro.setInstructor('Brutis', 44);
+        console.log(coursetro.getInstructor());
     }
 });
