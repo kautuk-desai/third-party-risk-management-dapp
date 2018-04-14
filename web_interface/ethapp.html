@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blockchain Made Simple</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="./ethappstyle.css">
+    
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+</head>
+
+<body>
+<div class="container-fluid height-100" id="ethApp">
+  <div class="jumbotron">
+    <h1>Blockchain made Third-party Risk Management Simple!</h1>
+    <p>Third-Party Risk Management is an essential part of any Financial Institution’s risk management framework. This project solves the problem of third party risk management effectively with blockchain.</p>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4">
+        <div class="user-type">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle status" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" data-display-text="I am here to" aria-expanded="false">
+    I am here to
+  </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <h1 class="dropdown-header">Financial Institute</h1>
+              <a class="dropdown-item" href="#" data-value="create_audit">Create An Audit</a>
+              <a class="dropdown-item" href="#" data-value="view_audit">View Vendor Audit</a>
+              <div class="dropdown-divider"></div>
+
+              <h6 class="dropdown-header">Vendor</h6>
+              <a class="dropdown-item" href="#" data-value="vendor">View Ratings</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="action-window">
+          <div id="fiCreateAudit" class="hidden">
+            <div class="header-div">
+              <h2>Let's Submit Vendor Audit</h2>
+            </div>
+            <form onsubmit="return false">
+              <div class="form-group row">
+                <label for="vendorAdress" class="col-sm-2 col-form-label">Vendor</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="vendorAdress" value="" placeholder="feed me with vendor address.." required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="auditCategory" class="col-sm-2 col-form-label">Rating Category</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="auditCategory" placeholder="category for which you want to rate the vendor.." required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="vendorRating" class="col-sm-2 col-form-label">Rating</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="vendorRating" placeholder="rate the vendor.. (1: worst, 10: best)" min="1" max="10" required>
+                </div>
+              </div>
+              <div class="button-container text-center">
+                <button type="button" class="btn btn-outline-secondary submit-button">Submit Vendor Audit</button>
+              </div>
+            </form>
+          </div>
+          <div id="vendorActionWindow" class="hidden">
+            <div class="header-div">
+              <h2>View Your Rating</h2>
+            </div>
+            <form class="form-inline" onsubmit="return false">
+              <div class="form-group col-2">
+                <label for="vendorAccountID" class="col-form-label">Vendor ID</label>
+              </div>
+              <div class="form-group col-8">
+                <label for="vendorAddress" class="sr-only">VendorAddress</label>
+                <input type="text" class="form-control width-100" id="vendorAccountID" placeholder="provide me your account address..">
+              </div>
+              <div class="form-group col-2">
+                <button type="submit" class="btn btn-outline-secondary submit-button" id="getRatings">View My Ratings</button>
+              </div>
+            </form>
+            <div id="ratingsView" class="hidden">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Financial Institute</th>
+                    <th>Audit Category</th>
+                    <th>Audit Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./ethapp.js"></script>
+  <script type="text/javascript" src="./contract_interaction.js"></script>
+</body>
+
+</html>

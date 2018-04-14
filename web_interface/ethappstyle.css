@@ -1,0 +1,51 @@
+body{
+  height: 100%
+}
+.height-100{
+  height:100% !important;
+}
+
+.width-100 {
+  width:100% !important;
+}
+
+.hidden {
+  display: none;
+}
+
+#ethApp .container-fluid {
+  margin-bottom: 2rem;
+}
+
+.user-type button{
+  width:100%;
+  background-color: transparent !important;
+  color: black !important;
+      box-shadow: none !important;
+}
+
+.user-type button.dropdown-toggle::after{
+  display: none;
+}
+
+.user-type .dropdown-menu.show {
+  width: 100%;
+}
+
+.user-type .dropdown .btn-secondary:hover{
+  background-color: transparent;
+  color: black;
+      box-shadow: none;
+}
+
+.header-div {
+  text-align: center;
+}
+
+.user-type .dropdown-item:hover, .dropdown-item:focus{
+  background-color: #e0e6ec;
+}
+
+#ratingsView {
+  margin-top: 1rem;
+}
