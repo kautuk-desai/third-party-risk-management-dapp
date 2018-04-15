@@ -8,9 +8,6 @@ function Utilities() {
     this.contract;
 }
 
-
-var test = 1;
-
 Utilities.prototype.addFIaccountsToDropdown = function() {
     let $vendor_selection = $(".fi-selection-dd");
     let $self = this;

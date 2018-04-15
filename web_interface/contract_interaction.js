@@ -1,7 +1,10 @@
 var app = angular.module('dApp', []);
 
+
+/* the controller that will manage the results from the retrieve audit ratings
+ */
 app.controller('ratingsViewCntrl', function($scope) {
-     
+
     $('#getRatings').off('click');
     $('#getRatings').on('click', function(e) {
         e.stopPropagation();
@@ -12,6 +15,11 @@ app.controller('ratingsViewCntrl', function($scope) {
             from: utility_obj.fi_address
         });
 
+
+        /* this is just a ratings object which is helpful to define the retrieved result
+         * and push it into the array. Since the object is defined with fixed attributes.
+         * it becomes easy for the angular controller to modify the dom and populate the results
+         */
         function ratings_obj() {
             this.fi;
             this.vendor;
@@ -20,6 +28,9 @@ app.controller('ratingsViewCntrl', function($scope) {
             this.date;
         }
 
+        /* this code block iterates to each result of the audit ids and then access the
+         * individual audit and create an array of ratings objects
+         */
         let vendor_ratings = [];
         for (let i = 0; i < audits.length; i++) {
             if (audits[i].c[0] === 1) {
@@ -65,7 +76,10 @@ $(document).ready(function() {
 
     var start_process = function(data) {
         utility_obj.accounts = web3.eth.accounts;
-        // console.log(accounts)
+
+
+
+
         var auditchain_contract = web3.eth.contract(data);
         utility_obj.contract = auditchain_contract.at("0xb5148c9af3eff91978dafd4cce0b7507f37972b0");
 
