@@ -42,6 +42,10 @@ body{
       box-shadow: none;
 }
 
+.btn-toolbar {
+  margin-bottom: 1rem;
+}
+
 .header-div {
   text-align: center;
 }

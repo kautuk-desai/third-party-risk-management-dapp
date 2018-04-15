@@ -12,33 +12,29 @@
 <body>
     <div class="container-fluid height-100" id="ethApp" ng-app="dApp">
         <div class="jumbotron">
-            <h1>Blockchain made Third-party Risk Management Simple!</h1>
+            <h1>AuditBlocks: Dashboard</h1>
+            <h3>Third-party Risk Management Platform</h3>
             <p>Third-Party Risk Management is an essential part of any Financial Institution’s risk management framework. This project solves the problem of third party risk management effectively with blockchain.</p>
         </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4">
-                    <div class="user-type">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle status" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" data-display-text="I am here to" aria-expanded="false">
-                                I am here to
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <h1 class="dropdown-header">Financial Institute</h1>
-                                <a class="dropdown-item" href="#" data-value="create_audit">Create An Audit</a>
-                                <a class="dropdown-item" href="#" data-value="view_audit">View Vendor Audit</a>
-                                <div class="dropdown-divider"></div>
-                                <h6 class="dropdown-header">Vendor</h6>
-                                <a class="dropdown-item" href="#" data-value="vendor">View Ratings</a>
-                            </div>
+                    <div class="user-type hidden">
+                        <div class="nav flex-column nav-pills selection-view" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-create_audit" data-value="create_audit" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Create New Audit</a>
+                            <a class="nav-link fi-selection-view" id="v-pills-view_audit" data-value="view_audit" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">View Existing Audit</a>
+                            <a class="nav-link hidden" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">View My Rating</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-8">
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> The contract is published.
+                    </div>
                     <div class="action-window">
                         <div id="fiCreateAudit" class="hidden">
                             <div class="header-div">
-                                <h2>Let's Submit Vendor Audit</h2>
+                                <h2>Submit Vendor Audit</h2>
                             </div>
                             <form onsubmit="return false">
                                 <div class="form-group row">
@@ -114,6 +110,12 @@
                 </div>
             </div>
         </div>
+        <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div> -->
         <!-- Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -127,7 +129,11 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="loginSelection" class="col-form-label">Financial Institute:</label>
+                                <!-- <label for="loginSelection" class="col-form-label">Financial Institute</label> -->
+                                <div class="btn-group btn-toolbar">
+                                    <button type="button" class="btn btn-outline-secondary user-type-selection-btn active" id="fidd">Financial Institute</button>
+                                    <button type="button" class="btn btn-outline-secondary user-type-selection-btn" style="margin-left: 1rem;" id="vdd">Vendor</button>
+                                </div>
                                 <div class="selection">
                                     <select class="form-control" id="loginSelection">
                                     </select>
@@ -152,8 +158,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./utilities.js"></script>
-    <script type="text/javascript" src="./ethapp.js"></script>
     <script type="text/javascript" src="./contract_interaction.js"></script>
+    <script type="text/javascript" src="./ethapp.js"></script>
 </body>
 
 </html>

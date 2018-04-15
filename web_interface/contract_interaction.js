@@ -77,14 +77,15 @@ $(document).ready(function() {
     var start_process = function(data) {
         utility_obj.accounts = web3.eth.accounts;
 
-
-
-
         var auditchain_contract = web3.eth.contract(data);
         utility_obj.contract = auditchain_contract.at("0xb5148c9af3eff91978dafd4cce0b7507f37972b0");
 
+        $("#loginSelection").removeClass("vendor-selection-dd");
+        $("#loginSelection").addClass("fi-selection-dd");
         utility_obj.addFIaccountsToDropdown();
-        utility_obj.addVendorAccountsToDropdown();
+        if (utility_obj.fi_address === undefined) {
+            $('#loginModal').modal('show');
+        }
     }
 
 
@@ -119,6 +120,10 @@ $(document).ready(function() {
 
         if (contract_response) {
             console.log("audit created...", window.fi_address);
+            $(".alert-success").show();
+            setTimeout(function() {
+                $(".alert-success").hide();
+            }, 1000);
         } else {
             console.error("unable to create contract...")
         }

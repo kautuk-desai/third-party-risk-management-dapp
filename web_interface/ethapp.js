@@ -1,9 +1,6 @@
 $(document).ready(function() {
-
-    /*  the event is fired when the user defines the action he/she wants to perform
-     * once the action is determined call the show action action panel based on the selection.
-     */
-    $(".user-type .dropdown-menu > a").click(function(e) {
+    $(".alert-success").hide();
+    $(".selection-view > a").click(function(e) {
         let new_value = $(".status").attr("data-display-text") + " " + this.innerHTML;
         $(".status").text(new_value);
         showActionPanel($(this).attr("data-value"));
@@ -21,9 +18,7 @@ $(document).ready(function() {
         if (user_type === "create_audit") {
             hideWindow("vendorActionWindow");
             $("#fiCreateAudit").removeClass("hidden");
-            $("#loginSelection").removeClass("vendor-selection-dd");
-            $("#loginSelection").addClass("fi-selection-dd");
-            utility_obj.addFIaccountsToDropdown();
+            utility_obj.addVendorAccountsToDropdown();
         } else if (user_type === "view_audit") {
             hideWindow("fiCreateAudit");
             $("#vendorActionWindow").removeClass("hidden");
@@ -33,13 +28,10 @@ $(document).ready(function() {
             utility_obj.addFIaccountsToDropdown();
         } else {
             hideWindow("fiCreateAudit");
+            $("#fiCreateAudit").addClass("hidden");
             $("#vendorActionWindow").removeClass("hidden");
             utility_obj.fi_address = undefined;
             modifyVendorActionView("vendor");
-        }
-
-        if (utility_obj.fi_address === undefined) {
-            $('#loginModal').modal('show');
         }
     };
 
@@ -90,5 +82,40 @@ $(document).ready(function() {
         e.stopPropagation();
         utility_obj.fi_address = $('#loginSelection').val();
         $('#loginModal').modal('hide');
+
+        let user_type = $(".user-type-selection-btn.active").attr("id");
+        if (user_type === "fidd") {
+            $('.user-type').toggleClass("hidden");
+            //$(".selection-view > a").toggleClass("hidden");
+        } else {
+            $('.user-type').toggleClass("hidden");
+            $(".selection-view > a").toggleClass("hidden");
+        }
+
+
+        showActionPanel($(".selection-view .active").attr("data-value"));
+
+    });
+
+
+    /*  the event is fired when the user defines the action he/she wants to perform
+     * once the action is determined call the show action action panel based on the selection.
+     */
+    $(".user-type-selection-btn").off("click");
+    $(".user-type-selection-btn").on("click", function(e) {
+        e.stopPropagation();
+        var $self = $(this);
+        if ($self.attr("id") === "vdd") {
+            $(".user-type-selection-btn").toggleClass("active");
+            $("#loginSelection").removeClass("fi-selection-dd");
+            $("#loginSelection").addClass("vendor-selection-dd");
+            utility_obj.addVendorAccountsToDropdown();
+        } else {
+            $(".user-type-selection-btn").toggleClass("active");
+            $("#loginSelection").removeClass("vendor-selection-dd");
+            $("#loginSelection").addClass("fi-selection-dd");
+            utility_obj.addFIaccountsToDropdown();
+
+        }
     });
 });

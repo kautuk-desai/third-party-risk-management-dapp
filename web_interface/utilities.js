@@ -10,6 +10,7 @@ function Utilities() {
 
 Utilities.prototype.addFIaccountsToDropdown = function() {
     let $vendor_selection = $(".fi-selection-dd");
+    $(".fi-selection-dd").html("");
     let $self = this;
     for (let i = 0; i < 5; i++) {
         $self.fi_accounts_mapping[$self.accounts[i]] = $self.fis[i];
@@ -24,6 +25,7 @@ Utilities.prototype.addFIaccountsToDropdown = function() {
 
 Utilities.prototype.addVendorAccountsToDropdown = function() {
     let $self = this;
+    $(".vendor-selection-dd").html("");
     let $vendor_selection = $(".vendor-selection-dd");
     for (let i = 5; i < 10; i++) {
         $self.vendor_accounts_mapping[$self.accounts[i]] = $self.vendors[i - 5];
