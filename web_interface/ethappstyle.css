@@ -17,6 +17,10 @@ body{
   margin-bottom: 2rem;
 }
 
+#viewRatingsVendorSelection {
+  width: 100% !important;
+}
+
 .user-type button{
   width:100%;
   background-color: transparent !important;
